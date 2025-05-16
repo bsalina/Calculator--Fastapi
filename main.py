@@ -4,11 +4,6 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-import os
-from fastapi.staticfiles import StaticFiles
-
-if os.path.exists("static"):
-    app.mount("/static", StaticFiles(directory="static"), name="static")
     
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
