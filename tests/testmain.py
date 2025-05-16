@@ -4,6 +4,7 @@ from main import app
 client = TestClient(app)
 
 def test_add():
-    response = client.get("/add?a=2&b=3")
+    response = client.get("/add?a=1&b=2")
     assert response.status_code == 200
-    assert response.json()["result"] == 5
+    assert response.json() == {"result": 3}
+    
