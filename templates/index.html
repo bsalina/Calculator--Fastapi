@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FastAPI Calculator</title>
+</head>
+<body>
+  <h1>Simple Calculator</h1>
+  <form id="calc-form">
+    <input type="number" id="a" placeholder="Enter number A" required />
+    <input type="number" id="b" placeholder="Enter number B" required />
+    <select id="operation">
+      <option value="add">Add</option>
+      <option value="subtract">Subtract</option>
+      <option value="multiply">Multiply</option>
+      <option value="divide">Divide</option>
+    </select>
+    <button type="submit">Calculate</button>
+  </form>
+
+  <h2 id="result"></h2>
+
+  <script>
+    document.getElementById('calc-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const a = parseFloat(document.getElementById('a').value);
+      const b = parseFloat(document.getElementById('b').value);
+      const operation = document.getElementById('operation').value;
+
+      const response = await fetch(`/${operation}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ a, b }),
+      });
+
+      const data = await response.json();
+      document.getElementById('result').innerText = `Result: ${data.result ?? data.detail}`;
+    });
+  </script>
+</body>
+</html>
