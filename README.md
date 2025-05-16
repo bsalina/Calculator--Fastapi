@@ -23,5 +23,5 @@ Make sure Python 3.10 or higher is installed on your computer.
 Clone or download this project from GitHub:
 
 ```bash
-git clone https://github.com/bsalina/fastapi-12factor-app.git
-cd fastapi-12factor-app
+git clone https://github.com/bsalina/Calculator--Fastapi.git
+cd Calculator--Fastapi
